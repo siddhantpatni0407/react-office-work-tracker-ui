@@ -1,0 +1,105 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #007bff;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Hamburger menu button hidden on desktop */
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* Navigation links */
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navLinks li a:hover,
+.navLinks li a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+/* Active Link */
+.active {
+  background-color: rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+}
+
+/* Logout button */
+.logoutBtn {
+  background: white;
+  color: #007bff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus {
+  background-color: #e2e6ea;
+  outline: none;
+}
+
+/* Responsive Styles for small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #007bff;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 1rem;
+    border-radius: 0 0 0 8px;
+  }
+
+  .navLinks.showMenu {
+    display: flex;
+  }
+
+  .navLinks li {
+    margin-bottom: 0.75rem;
+  }
+
+  .logoutBtn {
+    margin-left: 0.5rem;
+  }
+}

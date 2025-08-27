@@ -1,0 +1,42 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9fafe; /* subtle light background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainContent {
+  flex-grow: 1;
+  max-width: 1200px;
+  margin: 2rem auto 3rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logoutContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  justify-content: center;
+}
+
+.cardsContainer > * {
+  flex: 1 1 320px; /* Card grows and shrinks responsively, min 320px */
+  max-width: 350px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  border-radius: 10px;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.cardsContainer > *:hover {
+  box-shadow: 0 8px 16px rgb(0 0 0 / 0.15);
+}
