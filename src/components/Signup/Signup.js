@@ -1,48 +1,86 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './Signup.module.css';
+import React, { useState } from "react";
+import styles from "./Signup.module.css";
 
-function Signup() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('user'); // default role
-  const navigate = useNavigate();
+const Signup = () => {
+  const [role, setRole] = useState("user"); 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Add backend signup logic
-    alert(`Sign up successful for ${email} as ${role}`);
-    navigate('/user-login');
+    console.log("Signup Data:", { ...formData, role });
+    alert(`Signed up as ${role}`);
   };
 
   return (
-    <div className={styles.container}>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <select value={role} onChange={e => setRole(e.target.value)} className={styles.select}>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className={styles.input}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className={styles.input}
-          required
-        />
-        <button type="submit" className={styles.button}>Sign Up</button>
+    <div className={styles.signupContainer}>
+      <h2 className={styles.signupTitle}>✨ Create Account</h2>
+      <form onSubmit={handleSubmit} className={styles.signupForm}>
+        
+        <div className={styles.formGroup}>
+          <label>Role</label>
+          <select 
+            value={role} 
+            onChange={(e) => setRole(e.target.value)}
+            className={styles.inputField}
+          >
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            value={formData.name}
+            onChange={handleChange}
+            className={styles.inputField}
+            required
+          />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={formData.email}
+            onChange={handleChange}
+            className={styles.inputField}
+            required
+          />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            value={formData.password}
+            onChange={handleChange}
+            className={styles.inputField}
+            required
+          />
+        </div>
+
+        <button type="submit" className={styles.signupBtn}>
+          🚀 Signup
+        </button>
       </form>
     </div>
   );
-}
+};
 
 export default Signup;

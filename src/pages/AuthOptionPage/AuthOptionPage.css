@@ -1,0 +1,118 @@
+/* AuthOptionPage.css */
+.auth-option-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-option-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 50px 40px;
+  border-radius: 24px;
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.12);
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-4px);
+}
+
+.auth-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+  color: #2c3e50;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.auth-box {
+  background: #fdfdfd;
+  border-radius: 18px;
+  padding: 30px 22px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.auth-box:hover {
+  transform: translateY(-10px) scale(1.02);
+  border: 2px solid #4a90e2;
+  background: linear-gradient(135deg, #ffffff, #f0f8ff);
+  box-shadow: 0 10px 25px rgba(74, 144, 226, 0.25);
+}
+
+.auth-icon {
+  font-size: 3.2rem;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+.auth-box:hover .auth-icon {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.auth-box h3 {
+  font-size: 1.35rem;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.auth-box p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Different colors for Admin vs User */
+.admin-login .auth-icon,
+.admin-signup .auth-icon {
+  color: #e67e22; /* deep orange */
+}
+
+.user-login .auth-icon,
+.user-signup .auth-icon {
+  color: #2ecc71; /* emerald green */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 35px 25px;
+  }
+
+  .auth-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .auth-icon {
+    font-size: 2.6rem;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

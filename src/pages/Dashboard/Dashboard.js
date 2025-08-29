@@ -13,7 +13,7 @@ import LeavePlannerCard from "../../components/LeavePlannerCard/LeavePlannerCard
 import styles from "./Dashboard.module.css";
 
 function Dashboard() {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();  // user object contains { role: "ADMIN" | "USER" }
   const navigate = useNavigate();
 
   const [selectedCard, setSelectedCard] = useState("all");
@@ -31,7 +31,7 @@ function Dashboard() {
     <div className={styles.appContainer}>
       <Navbar onSelectCard={handleCardSelect} />
 
-      <Header title="Dashboard" />
+      <Header title={`Dashboard (${user?.role})`} />
 
       <main className={styles.mainContent}>
         <div className={styles.logoutContainer}>
@@ -39,6 +39,25 @@ function Dashboard() {
             Logout
           </button>
         </div>
+
+        {/* Role-based UI */}
+        {user?.role === "ADMIN" ? (
+          <section className={styles.adminSection}>
+            <h2>👨‍💼 Admin Controls</h2>
+            <button
+              className="btn btn-primary m-2"
+              onClick={() => navigate("/admin-signup")}
+            >
+              Create New Admin
+            </button>
+            <button
+              className="btn btn-secondary m-2"
+              onClick={() => navigate("/user-signup")}
+            >
+              Create New User
+            </button>
+          </section>
+        ) : null}
 
         <section className={styles.cardsContainer}>
           {(selectedCard === "all" || selectedCard === "task") && (
